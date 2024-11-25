@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import MarcarLlegada from './components/MarcarLlegada';
+import Empleados from './components/Empleados';
+import IncapacidadesPermisos from './components/IncapacidadesPermisos';
+import Estadisticas from './components/Estadisticas';
+import FormularioEmpleado from './components/FormularioEmpleado';
+import HistorialHoras from './components/HistorialHoras';
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/marcar-llegada" element={<MarcarLlegada />} />
+        <Route path="/empleados" element={<Empleados />} />
+        <Route path="/empleados/agregar" element={<FormularioEmpleado />} />
+        <Route path="/empleados/editar/:pin" element={<FormularioEmpleado />} />
+        <Route path="/empleados/historial/:pin" element={<HistorialHoras />} />
+        <Route path="/incapacidades-permisos" element={<IncapacidadesPermisos />} />
+        <Route path="/estadisticas" element={<Estadisticas />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
